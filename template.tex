@@ -214,6 +214,9 @@ Tujuan dari penelitian ini adalah untuk:
 Penelitian ini dapat memberikan wawasan mengenai faktor-faktor kunci yang menentukan keberhasilan implementasi core banking system, sehingga dapat membantu lembaga keuangan mikro dalam merencanakan dan menjalankan proyek implementasi teknologi core banking system yang lebih efektif. Dengan memahami tantangan dan kebutuhan spesifik, lembaga keuangan dapat memaksimalkan efisiensi, produktivitas, dan pelayanan kepada nasabah.
 
 
+% -------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 \section{Studi Literatrur}
 
 Pada bab ini menjelaskan tentang landasan teori yang digunakan dalam melakukan penelitian, yaitu mengenai \textit{core banking system} dan \textit{critical success factor}. Selain itu pada bab ini akan dibahas mengenai kajian dari hasil - hasil penelitian sebelumnya yang terkait dengan penelitian ini.
@@ -229,6 +232,12 @@ CBS memberikan banyak manfaat bagi institusi perbankan, termasuk efisiensi opera
 \subsubsection{Tantangan Implementasi}
 
 Meskipun CBS menawarkan berbagai manfaat, implementasi sistem ini dihadapkan pada sejumlah tantangan, terutama dalam hal adaptasi teknologi dan manajemen perubahan. Di Vietnam, penelitian menunjukkan bahwa kualitas layanan menjadi tantangan terbesar dalam memastikan kepuasan pengguna CBS, yang sering kali terhambat oleh ketergantungan pada infrastruktur teknologi yang ketinggalan zaman \cite{Hsiao-ebanking}. Selain itu, audit sistem CBS menggunakan ITIL menggarisbawahi perlunya pengelolaan siklus hidup layanan yang tepat untuk menghindari kegagalan operasional dan memastikan keberlanjutan sistem dalam jangka panjang \cite{wahyudi-cbs}. Implementasi CBS juga memerlukan penyesuaian budaya organisasi dan pelatihan intensif bagi karyawan untuk mengoptimalkan penggunaannya.
+
+\subsection{Penelitian Terdahulu}
+
+% -------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Metodologi}
 
 \subsection{Critical Success Factors}
 
@@ -269,10 +278,9 @@ Menurut penelitian Singh (2019), langkah-langkah teknik AHP adalah sebagai berik
     \item Menghitung prioritas relatif gabungan setiap kriteria untuk mengetahui nilai keseluruhan untuk setiap kriteria.
 \end{enumerate}
 
-Pada tahap perbandingan, penelitian ini menggunakan metode \textit{pairwise comparison}. Dalam proses ini, ditentukan seberapa penting setiap kriteria dibandingkan dengan kriteria lainnya dengan terlebih dahulu membuat matriks penilaian resiprokal $n \times n$ berdasarkan perbandingan kriteria. Matriks perbandingan (\textit{Matriks A}) dibuat menggunakan data yang dikumpulkan dari kuesioner dan wawancara dengan para ahli yang terlibat dalam proses pengambilan keputusan \cite{Singh2019}.
+Pada tahap perbandingan, penelitian ini menggunakan metode \textit{pairwise comparison}. Dalam proses ini, ditentukan seberapa penting setiap kriteria dibandingkan dengan kriteria lainnya dengan terlebih dahulu membuat matriks penilaian resiprokal $n \times n$ berdasarkan perbandingan kriteria. Matriks perbandingan (\textit{Matriks A}) dibuat menggunakan data yang dikumpulkan dari kuesioner dan wawancara dengan para ahli yang terlibat dalam proses pengambilan keputusan \cite{Singh2019}. Matriks perbandingan dapat dilihat pada persamaan \ref{eq:matriks_a}
 
-
-\[
+\begin{equation}
 A = \begin{bmatrix}
 a_{11} & a_{12} & \cdots & a_{1m} \\
 a_{21} & \cdots & \cdots & a_{2m} \\
@@ -285,63 +293,116 @@ a_{m1} & \cdots & \cdots & a_{mm}
 \vdots & \vdots & \ddots & \vdots \\
 \frac{1}{a_{1m}} & \cdots & \cdots & 1
 \end{bmatrix}
-\]
+\label{eq:matriks_a}
+\end{equation}
 
+Setelah pembuatan matriks \ref{eq:matriks_a}, dilakukan normalisasi terhadap matriks dengan rumus normalisasi pada persamaan \ref{eq:normalisasi} \cite{Singh2019}.
 
-Setelah pembuatan matriks, dilakukan normalisasi terhadap matriks dengan rumus normalisasi sebagai berikut \cite{Singh2019}:
-\[
+\begin{equation}
 x_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}
-\]
+\label{eq:normalisasi}
+\end{equation}
 
-Kemudian dihitung bobot prioritas setiap pasangan kriteria dengan rumus sebagai berikut \cite{Singh2019}:
+Kemudian dihitung bobot prioritas setiap pasangan kriteria dengan rumus pada persamaan \ref{eq:bobot_prioritas} \cite{Singh2019}:
 
-\[
+\begin{equation}
 P_j = \frac{1}{n} \sum_{i=1}^{n} a_{ij}
-\]
+\label{eq:bobot_prioritas}
+\end{equation}
 
-
-Setelah itu, dilakukan pengecekan terhadap nilai relatif bobot menggunakan matriks perbandingan (A) dan eigenvector paling besar ($λ_max$) dengan rumus sebagai berikut \cite{Singh2019}:
-\[
+Setelah itu, dilakukan pengecekan terhadap nilai relatif bobot menggunakan matriks perbandingan (A) dan eigenvector paling besar ($λ_{\text{max}}$) dengan rumus pada persamaan \ref{eq:cek_nilai} \cite{Singh2019}:
+\begin{equation}
 AP_i = \lambda_{\text{max}} P_i \quad (i = 1, 2, 3, \ldots, n)
-\]
+\label{eq:cek_nilai}
+\end{equation}
 
-
-Kemudian dilakukan kalkulasi untuk mencari \textit{Consistency Index} (CI) dengan rumus sebagai berikut \cite{Singh2019}:
-\[
+Kemudian dilakukan kalkulasi untuk mencari \textit{Consistency Index} (CI) dengan rumus pada persamaan \ref{eq:ci} \cite{Singh2019}:
+\begin{equation}
 CI = \frac{\lambda_{\text{max}} - n}{n - 1}
-\]
+\label{eq:ci}
+\end{equation}
 
+Rasio terakhir yang harus dihitung adalah \textit{Consistency Ratio} (CR). Supaya dianggap dapat diterima, nilai CR harus sekitar 0,10 (atau 10\%). Rumus untuk menghitung CR dapat dilihat pada persamaan \ref{eq:cr} \cite{Singh2019}:
 
-
-Rasio terakhir yang harus dihitung adalah \textit{Consistency Ratio} (CR). Supaya dianggap dapat diterima, nilai CR harus sekitar 0,10 (atau 10\%). Rumus untuk menghitung CR adalah \cite{Singh2019}:
-
-\[
+\begin{equation}
 CR = \frac{CI}{RI}
-\]
+\label{eq:cr}
+\end{equation}
+
+% Pada tahap perbandingan, penelitian ini menggunakan metode \textit{pairwise comparison}. Dalam proses ini, ditentukan seberapa penting setiap kriteria dibandingkan dengan kriteria lainnya dengan terlebih dahulu membuat matriks penilaian resiprokal $n \times n$ berdasarkan perbandingan kriteria. Matriks perbandingan (\textit{Matriks A}) dibuat menggunakan data yang dikumpulkan dari kuesioner dan wawancara dengan para ahli yang terlibat dalam proses pengambilan keputusan \cite{Singh2019}.
+
+
+% \begin{equation}
+% A = \begin{bmatrix}
+% a_{11} & a_{12} & \cdots & a_{1m} \\
+% a_{21} & \cdots & \cdots & a_{2m} \\
+% \vdots & \vdots & \ddots & \vdots \\
+% a_{m1} & \cdots & \cdots & a_{mm}
+% \end{bmatrix} = 
+% \begin{bmatrix}
+% 1 & a_{12} & \cdots & a_{1m} \\
+% \frac{1}{a_{12}} & 1 & \cdots & a_{2m} \\
+% \vdots & \vdots & \ddots & \vdots \\
+% \frac{1}{a_{1m}} & \cdots & \cdots & 1
+% \end{bmatrix}
+% \end{equation}
+
+
+% Setelah pembuatan matriks, dilakukan normalisasi terhadap matriks dengan rumus normalisasi sebagai berikut \cite{Singh2019}:
+
+% \begin{equation}
+% x_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}
+% \end{equation}
+
+
+% Kemudian dihitung bobot prioritas setiap pasangan kriteria dengan rumus sebagai berikut \cite{Singh2019}:
+
+% \begin{equation}
+% P_j = \frac{1}{n} \sum_{i=1}^{n} a_{ij}
+% \end{equation}
+
+
+% Setelah itu, dilakukan pengecekan terhadap nilai relatif bobot menggunakan matriks perbandingan (A) dan eigenvector paling besar ($λ_max$) dengan rumus sebagai berikut \cite{Singh2019}:
+% \begin{equation}
+% AP_i = \lambda_{\text{max}} P_i \quad (i = 1, 2, 3, \ldots, n)
+% \end{equation}
+
+% Kemudian dilakukan kalkulasi untuk mencari \textit{Consistency Index} (CI) dengan rumus sebagai berikut \cite{Singh2019}:
+% \begin{equation}
+% CI = \frac{\lambda_{\text{max}} - n}{n - 1}
+% \end{equation}
 
 
 
-Di mana RI adalah \textit{Random Index} yang biasanya diperoleh dari tabel yang telah ditetapkan berdasarkan jumlah perbandingan (n) yang dilakukan \cite{Singh2019}. RI dapat dilihat pada tabel 3.1.
+% Rasio terakhir yang harus dihitung adalah \textit{Consistency Ratio} (CR). Supaya dianggap dapat diterima, nilai CR harus sekitar 0,10 (atau 10\%). Rumus untuk menghitung CR adalah \cite{Singh2019}:
 
-\begin{table}[h]
-    \centering
+% \begin{equation}
+% CR = \frac{CI}{RI}
+% \end{equation}
+
+
+
+Di mana RI adalah \textit{Random Index} yang biasanya diperoleh dari tabel yang telah ditetapkan berdasarkan jumlah perbandingan (n) yang dilakukan \cite{Singh2019}. RI dapat dilihat pada tabel \ref{random-index}.
+
+\begin{table}[H]
     \caption{Random Index (RI)}
-    \begin{tabular}{|c|ccccccccccc|}
-        \hline
-        n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
-        \hline
+    \label{random-index}
+    \centering
+    \begin{tabular}{c|ccccccccccc}
+        \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+        \midrule
         RI & 0 & 0 & 0.58 & 0.9 & 1.12 & 1.24 & 1.32 & 1.41 & 1.45 & 1.49 & 1.51 \\
-        \hline
+        \bottomrule
     \end{tabular}
 \end{table}
 
 
-\subsection{Penelitian Terdahulu}
 
 % https://remote-lib.ui.ac.id:2147/stamp/stamp.jsp?tp=&arnumber=8982404
 % https://remote-lib.ui.ac.id:2147/stamp/stamp.jsp?tp=&arnumber=9354331
 
-\section{Metodologi}
+
 
 % Dibawah  ini template bawaan dari MDPI
 
@@ -427,11 +488,11 @@ Di mana RI adalah \textit{Random Index} yang biasanya diperoleh dari tabel yang 
 % \multirow[m]{3}{*}{Entry 1 *}	& Data			& Data			& Data\\
 % 			  	                   & Data			& Data			& Data\\
 % 			             	      & Data			& Data			& Data\\
-%                    \midrule
+%                     \midrule
 % \multirow[m]{3}{*}{Entry 2}    & Data			& Data			& Data\\
 % 			  	                  & Data			& Data			& Data\\
 % 			             	     & Data			& Data			& Data\\
-%                    \midrule
+%                     \midrule
 % \multirow[m]{3}{*}{Entry 3}    & Data			& Data			& Data\\
 % 			  	                 & Data			& Data			& Data\\
 % 			             	    & Data			& Data			& Data\\
