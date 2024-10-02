@@ -240,6 +240,101 @@ Studi lain \cite{salu-csf} di sektor perbankan India menyoroti sepuluh faktor su
 
 Kesuksesan implementasi CBS juga dipengaruhi oleh kesiapan organisasi dalam mengelola perubahan \cite{johny-csf}. Studi ini menemukan bahwa implementasi CBS yang efektif memerlukan pemahaman mendalam tentang proses implementasi, tantangan teknis, serta kesiapan teknologi dan tenaga kerja. Kurangnya pelatihan dan keterampilan teknis dapat menyebabkan kegagalan implementasi sistem CBS yang kompleks \cite{johny-csf}.
 
+\subsection{Analytical Hierarchy Process (AHP)}
+Analytical Hierarchy Process (AHP) adalah sebuah teknik yang diperkenalkan oleh Dr. Thomas Saaty pada tahun 1990 melalui penelitiannya yang berjudul “How to make a decision: The analytic hierarchy process”. AHP digunakan untuk membantu organisasi membuat keputusan yang tepat melalui analisis solusi alternatif. 
+
+Tahapan dari penggunaan teknik AHP adalah sebagai berikut:
+\begin{enumerate}
+    \item Mendefinisikan masalah dan kriteria yang ingin dievaluasi.
+    \item Membuat struktur hirarki dengan tujuan di paling atas, kriteria dan sub-kriteria di tengah, serta alternatif di bagian bawah.
+    \item Menentukan nilai penting dari setiap kriteria \cite{Jacob2021}.
+\end{enumerate}
+
+Teknik AHP diaplikasikan dengan menggunakan kuesioner matriks AHP berdasarkan faktor-faktor kesuksesan yang telah diidentifikasi sebelumnya. Terdapat skala angka dari 1 sampai 9 dengan keterangan sebagai berikut \cite{Saaty1990}:
+\begin{itemize}
+    \item 1: Kriteria yang sama pentingnya dengan kriteria lain.
+    \item 3: Kriteria sedikit lebih penting dari yang lain.
+    \item 5: Kriteria lebih penting dari yang lain.
+    \item 7: Kriteria sangat penting dari yang lain.
+    \item 9: Kriteria yang penting secara absolut dari yang lain.
+    \item Nilai di antaranya merepresentasikan nilai tengah.
+\end{itemize}
+
+Menurut penelitian Singh (2019), langkah-langkah teknik AHP adalah sebagai berikut:
+\begin{enumerate}
+    \item Menentukan tujuan dan kriteria untuk mencapainya.
+    \item Mencari solusi alternatif untuk mencapai tujuan.
+    \item Menentukan nilai setiap kriteria menggunakan matriks, untuk mencari nilai penting dari setiap kriteria.
+    \item Membandingkan setiap pasangan kriteria menggunakan angka yang diperoleh dari matriks AHP, dengan memberikan urutan seberapa besar satu kriteria dibandingkan dengan yang lain.
+    \item Menghitung prioritas relatif gabungan setiap kriteria untuk mengetahui nilai keseluruhan untuk setiap kriteria.
+\end{enumerate}
+
+Pada tahap perbandingan, penelitian ini menggunakan metode \textit{pairwise comparison}. Dalam proses ini, ditentukan seberapa penting setiap kriteria dibandingkan dengan kriteria lainnya dengan terlebih dahulu membuat matriks penilaian resiprokal $n \times n$ berdasarkan perbandingan kriteria. Matriks perbandingan (\textit{Matriks A}) dibuat menggunakan data yang dikumpulkan dari kuesioner dan wawancara dengan para ahli yang terlibat dalam proses pengambilan keputusan \cite{Singh2019}.
+
+
+\[
+A = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1m} \\
+a_{21} & \cdots & \cdots & a_{2m} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & \cdots & \cdots & a_{mm}
+\end{bmatrix} = 
+\begin{bmatrix}
+1 & a_{12} & \cdots & a_{1m} \\
+\frac{1}{a_{12}} & 1 & \cdots & a_{2m} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{1}{a_{1m}} & \cdots & \cdots & 1
+\end{bmatrix}
+\]
+
+
+Setelah pembuatan matriks, dilakukan normalisasi terhadap matriks dengan rumus normalisasi sebagai berikut \cite{Singh2019}:
+\[
+x_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}
+\]
+
+Kemudian dihitung bobot prioritas setiap pasangan kriteria dengan rumus sebagai berikut \cite{Singh2019}:
+
+\[
+P_j = \frac{1}{n} \sum_{i=1}^{n} a_{ij}
+\]
+
+
+Setelah itu, dilakukan pengecekan terhadap nilai relatif bobot menggunakan matriks perbandingan (A) dan eigenvector paling besar ($λ_max$) dengan rumus sebagai berikut \cite{Singh2019}:
+\[
+AP_i = \lambda_{\text{max}} P_i \quad (i = 1, 2, 3, \ldots, n)
+\]
+
+
+Kemudian dilakukan kalkulasi untuk mencari \textit{Consistency Index} (CI) dengan rumus sebagai berikut \cite{Singh2019}:
+\[
+CI = \frac{\lambda_{\text{max}} - n}{n - 1}
+\]
+
+
+
+Rasio terakhir yang harus dihitung adalah \textit{Consistency Ratio} (CR). Supaya dianggap dapat diterima, nilai CR harus sekitar 0,10 (atau 10\%). Rumus untuk menghitung CR adalah \cite{Singh2019}:
+
+\[
+CR = \frac{CI}{RI}
+\]
+
+
+
+Di mana RI adalah \textit{Random Index} yang biasanya diperoleh dari tabel yang telah ditetapkan berdasarkan jumlah perbandingan (n) yang dilakukan \cite{Singh2019}. RI dapat dilihat pada tabel 3.1.
+
+\begin{table}[h]
+    \centering
+    \caption{Random Index (RI)}
+    \begin{tabular}{|c|ccccccccccc|}
+        \hline
+        n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+        \hline
+        RI & 0 & 0 & 0.58 & 0.9 & 1.12 & 1.24 & 1.32 & 1.41 & 1.45 & 1.49 & 1.51 \\
+        \hline
+    \end{tabular}
+\end{table}
+
 
 \subsection{Penelitian Terdahulu}
 
