@@ -249,11 +249,13 @@ Kesuksesan implementasi CBS juga dipengaruhi oleh kesiapan organisasi dalam meng
 
 \section{Metodologi}
 
-\textit{Critical Success Factors} (CSF) sistem core banking diidentifikasi melalui tinjauan pustaka dari jurnal sistem informasi berkualitas tinggi yang diterbitkan antara tahun 2019 dan 2024. Tinjauan ini difokuskan pada database seperti IEEE Xplore Digital Library, ScienceDirect, dan ACM Digital Library. Kata kunci yang digunakan untuk pencarian pustaka mencakup "\textit{critical success factors}", “\textit{success factors}”, "\textit{}core banking system", "\textit{banking system}", dan beberapa lainnya. Berdasarkan tinjauan pustaka yang sudah dilakukan, didapatkan … faktor-faktor kesuksesan untuk digunakan dalam penelitian ini. Setelah itu, digunakan langkah-langkah dari \textit{Analytical Hierarchy Process} (AHP) untuk merancang hierarki yang berisi tujuan, kriteria untuk mencapai tujuan, dan alternatif.
+\textit{Critical Success Factors} (CSF) sistem core banking diidentifikasi melalui tinjauan pustaka dari jurnal sistem informasi berkualitas tinggi yang diterbitkan antara tahun 2019 dan 2024. Tinjauan ini difokuskan pada database seperti IEEE Xplore Digital Library, ScienceDirect, dan ACM Digital Library. Kata kunci yang digunakan untuk pencarian pustaka mencakup "\textit{critical success factors}", “\textit{success factors}”, "\textit{}core banking system", "\textit{banking system}", dan beberapa lainnya. Berdasarkan tinjauan pustaka yang telah dilakukan, didapat … faktor-faktor kesuksesan untuk digunakan dalam penelitian ini.
 
-AHP adalah metode sistematis untuk mengatasi tantangan dalam proses pengambilan keputusan dengan menggunakan prinsip-prinsip dari matematika. Metode ini menawarkan cara yang jelas dan terorganisasi untuk mengukur berbagai faktor yang terlibat dalam pengambilan keputusan dalam hierarki. Prosesnya dimulai dengan mengidentifikasi kriteria untuk keputusan tersebut \cite{Tavana2021AnalyticalHP}. Hasil dari penggunaan AHP adalah urutan faktor-faktor kesuksesan yang memengaruhi implementasi \textit{core banking system} pada lembaga keuangan mikro.
+Setelah melakukan tinjaun pustaka, langkah-langkah dari \textit{Analytical Hierarchy Process} (AHP) diaplikasikan untuk merancang hierarki yang berisi tujuan, kriteria untuk mencapai tujuan, dan alternatif. AHP adalah metode sistematis untuk mengatasi tantangan dalam proses pengambilan keputusan dengan menggunakan prinsip-prinsip dari matematika. Metode ini menawarkan cara yang jelas dan terorganisasi untuk mengukur berbagai faktor yang terlibat dalam pengambilan keputusan dalam hierarki. Prosesnya dimulai dengan mengidentifikasi kriteria untuk keputusan tersebut \cite{Tavana2021AnalyticalHP}. Hasil dari penggunaan AHP adalah urutan faktor-faktor kesuksesan yang memengaruhi implementasi \textit{core banking system} pada lembaga keuangan mikro.
 
-Penelitian ini menggunakan pendekatan kuantitatif dengan menggunakan data yang dikumpulkan dari kuesioner. Kuesioner dibuat berdasarkan hierarki yang telah dirancang mengunakan langkah-langkah AHP. Selanjutnya, responden diminta untuk meninjau dan mengisi kuesioner yang berisi faktor-faktor keberhasilan implementasi \textit{core banking system}. Kemudian, responden menilai pertanyaan pada kuesioner. Figure \ref{fig:tahapan-penelitian} di bawah merupakan ringkasan dari tahapan penelitian.
+Penelitian ini menggunakan pendekatan kuantitatif dengan menggunakan data yang dikumpulkan dari kuesioner yang dirancang berdasarkan hierarki yang telah dibuat sebelumnya mengunakan langkah-langkah AHP. Jumlah responden yang mengisi kuesioner adalah 12 orang yang berasal dari 6 organisasi yang berbeda. Responden yang dipilih adalah 1 direktur atau ketua organisasi dan 1 ketua project dari setiap organisasi. Responden diminta untuk meninjau dan mengisi kuesioner yang berisi faktor-faktor keberhasilan implementasi \textit{core banking system}. Kemudian, responden memberikan nilai pada pertanyaan di kuesioner. 
+
+Setelah responden mengisi kuesioner yang diberikan peneliti, urutan dari faktor-faktor kesuksesan dicari menggunakan langkah AHP selanjutnya yaitu menghitung rasio konsistensi atau \textit{consistency ratio} (CR). CSF harus diidentifikasi untuk mengurangi tingkat kegagalan implementasi \textit{core banking system}. Figure \ref{fig:tahapan-penelitian} di bawah merupakan ringkasan dari tahapan penelitian.
 
 \begin{figure}[H]
 \label{fig:tahapan-penelitian}
@@ -281,7 +283,7 @@ Teknik AHP diaplikasikan dengan menggunakan kuesioner matriks AHP berdasarkan fa
     \item Nilai di antaranya merepresentasikan nilai tengah.
 \end{itemize}
 
-Menurut penelitian Singh (2019), langkah-langkah teknik AHP adalah sebagai berikut:
+Menurut penelitian Singh \cite{Singh2019}, langkah-langkah teknik AHP adalah sebagai berikut:
 \begin{enumerate}
     \item Menentukan tujuan dan kriteria untuk mencapainya.
     \item Mencari solusi alternatif untuk mencapai tujuan.
@@ -322,7 +324,7 @@ P_j = \frac{1}{n} \sum_{i=1}^{n} a_{ij}
 \label{eq:bobot_prioritas}
 \end{equation}
 
-Setelah itu, dilakukan pengecekan terhadap nilai relatif bobot menggunakan matriks perbandingan (A) dan eigenvector paling besar ($λ_{\text{max}}$) dengan rumus pada persamaan \ref{eq:cek_nilai} \cite{Singh2019}:
+Setelah itu, dilakukan pengecekan terhadap nilai relatif bobot menggunakan matriks perbandingan (A) dan eigenvector paling besar $\lambda_{\text{max}}$ dengan rumus pada persamaan \ref{eq:cek_nilai} \cite{Singh2019}:
 \begin{equation}
 AP_i = \lambda_{\text{max}} P_i \quad (i = 1, 2, 3, \ldots, n)
 \label{eq:cek_nilai}
