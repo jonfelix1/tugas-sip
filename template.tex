@@ -4,6 +4,15 @@
 %=================================================================
 \documentclass[journal,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
 
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{changepage}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric, arrows}
+
 %--------------------
 % Class Options:
 %--------------------
@@ -69,10 +78,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Analisis Faktor-Faktor Penentu Keberhasilan Implementasi Sistem Core Banking di Bank}
+\Title{Analisis Faktor-Faktor Penentu Keberhasilan Implementasi Sistem Core Banking pada Lembaga Keuangan Mikro}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{Analisis Faktor-Faktor Penentu Keberhasilan Implementasi Sistem Core Banking di Bank}
+\TitleCitation{Analisis Faktor-Faktor Penentu Keberhasilan Implementasi Sistem Core Banking pada Lembaa Keuangan Mikro}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
@@ -99,10 +108,10 @@ $^{3}$ \quad Fakultas Ilmu Komputer Universitas Indonesia; jon.felix@ui.ac.id\\
 }
 
 % Contact information of the corresponding author
-\corres{Correspondence: e-mail@e-mail.com; Tel.: (optional; include country code; if there are multiple corresponding authors, add author initials) +xx-xxxx-xxx-xxxx (F.L.)}
+% \corres{Correspondence: e-mail@e-mail.com; Tel.: (optional; include country code; if there are multiple corresponding authors, add author initials) +xx-xxxx-xxx-xxxx (F.L.)}
 
 % Current address and/or shared authorship
-\firstnote{Current address: Affiliation.}  % Current address should not be the same as any items in the Affiliation section.
+\firstnote{Tugas Penelitian Sistem Informasi Perushaan}
 \secondnote{These authors contributed equally to this work.}
 % The commands \thirdnote{} till \eighthnote{} are available for further notes
 
@@ -111,10 +120,10 @@ $^{3}$ \quad Fakultas Ilmu Komputer Universitas Indonesia; jon.felix@ui.ac.id\\
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusions: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.}
+\abstract{Implementasi Core Banking System (CBS) merupakan langkah strategis untuk meningkatkan efisiensi operasional, keamanan, kualitas layanan, serta kepatuhan pada regulasi terkait penyelenggaraan teknologi informasi pada lembaga keuangan mikro, seperti Bank Perekonomian Rakyat (BPR). Namun kondisi yang ada menunjukan bahwa 45 persen BPR di Indonesia belum menerapkan CBS sesuai dengan amanat kewajiban utilisasi CBS menurut POJK SPTI tahun 2016, serta 30 persen implementasi CBS pada BPR di wilayah DKI Jaya gagal dilakukan sehingga penting bagi BPR yang belum menerapkan CBS untuk mempelajari faktor keberhasilan dari BPR yang telah sukses mengimplementasikan CBS guna mengakselerasi implementasi CBS pada organisasinya. Penelitian ini mengidentifikasi Critical Success Factors (CSF) untuk implementasi CBS dengan menggunakan kerangka People, Process, dan Technology. Data dikumpulkan dari pemimpin proyek implementasi CBS di sembilan BPR dan dianalisis menggunakan metode Fuzzy-AHP untuk menentukan peringkat CSF. Hasil penelitian menunjukkan bahwa dukungan manajemen senior, alokasi sumber daya, rekayasa ulang proses bisnis, kebutuhan sistem yang jelas, dan performa sistem adalah faktor yang paling berpengaruh. Temuan ini menekankan pentingnya strategi yang terarah untuk mengatasi hambatan implementasi CBS, terutama pada BPR dengan keterbatasan sumber daya. Penelitian ini memberikan kontribusi dengan menawarkan kerangka kerja praktis untuk mengoptimalkan adopsi CBS, meningkatkan kepatuhan terhadap standar regulasi, dan mendukung keberlanjutan operasional lembaga keuangan mikro.}
 
 % Keywords
-\keyword{keyword 1; keyword 2; keyword 3 (List three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.)} 
+\keyword{Core Banking System; Critical Success Factors; Lembaga Keuangan Mikro; Fuzzy-AHP} 
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -176,11 +185,11 @@ $^{3}$ \quad Fakultas Ilmu Komputer Universitas Indonesia; jon.felix@ui.ac.id\\
 
 \subsection{Latar Belakang}
 
-Dalam beberapa tahun terakhir, lembaga keuangan mikro seperti Bank Perekonomian Rakyat (BPR) dan Koperasi Simpan Pinjam (KSP) telah mengalami pertumbuhan pesat di Indonesia \cite{OJK2024roadmap}. Lembaga-lembaga ini memainkan peran penting dalam inklusi keuangan, terutama bagi masyarakat yang tidak memiliki akses ke perbankan konvensional. Namun, di tengah perkembangan ini, lembaga keuangan mikro menghadapi tantangan dalam mengelola operasional mereka, termasuk efisiensi pengelolaan data, keamanan transaksi, dan kecepatan pelayanan kepada nasabah. Untuk mengatasi tantangan tersebut, adopsi teknologi informasi, khususnya aplikasi inti perbankan, atau yang kerap kali dikenal sebagai core banking system, menjadi solusi strategis. \textit{Core banking system} (CBS) memungkinkan lembaga keuangan mengelola berbagai aspek operasional secara terintegrasi—mulai dari manajemen simpanan, pinjaman, hingga pelaporan keuangan serta pelaporan regulasi pada regulator, seperti Bank Indonesia (BI), Otoritas Jasa Keuangan (OJK), dan lain-lain. Implementasi \textit{core banking system} bertujuan untuk meningkatkan produktivitas, keamanan, dan pelayanan lembaga keuangan terhadap nasabah mereka.
+Dalam beberapa tahun terakhir, lembaga keuangan mikro seperti Bank Perekonomian Rakyat (BPR) dan Koperasi Simpan Pinjam (KSP) telah mengalami pertumbuhan pesat di Indonesia \cite{OJK2024roadmap}. Lembaga-lembaga ini memainkan peran penting dalam inklusi keuangan, terutama bagi masyarakat yang belum terjangkau oleh perbankan konvensional. Namun, seiring dengan pertumbuhan tersebut, tantangan dalam efisiensi pengelolaan data, keamanan transaksi, dan kecepatan pelayanan menjadi semakin kompleks. Untuk mengatasi hal ini, adopsi teknologi informasi, khususnya aplikasi inti perbankan atau core banking system (CBS), menjadi solusi strategis. CBS memungkinkan pengelolaan berbagai aspek operasional secara terintegrasi, seperti manajemen simpanan, pinjaman, hingga pelaporan keuangan dan kepatuhan terhadap regulasi dari otoritas seperti Bank Indonesia (BI) dan Otoritas Jasa Keuangan (OJK).
 
-    Roadmap Pengembangan dan Penguatan Industri BPR dan BPRS (RP2B) 2024-2027 \cite{OJK2024roadmap} menyoroti bahwa adopsi teknologi pada BPR dan BPRS masih sangat rendah, dengan mayoritas lembaga keuangan mikro belum memanfaatkan sistem CBS sepenuhnya. Implementasi teknologi ini tidaklah tanpa tantangan, karena setiap lembaga memiliki kebutuhan dan kondisi yang berbeda tergantung pada ukuran aset, jumlah rekening yang dikelola, dan kompleksitas operasional. Hal ini mengakibatkan lembaga keuangan mikro tidak hanya kesulitan dalam mengoptimalkan operasional, tetapi juga dalam bersaing dengan bank umum dan perusahaan teknologi finansial (\textit{fintech}) yang sudah lebih maju dalam hal digitalisasi \cite{Sitorus2023digital}. Keterbatasan ini pada akhirnya berdampak negatif terhadap kemampuan lembaga-lembaga tersebut dalam memberikan pelayanan yang cepat, akurat, dan transparan kepada nasabah. Sejalan dengan upaya peningkatan daya saing tersebut, CBS ditetapkan sebagai salah satu aspek penting dalam mendorong transformasi digital BPR/BPRS dan menjadi agenda prioritas bagi lembaga keuangan mikro dalam beberapa tahun ke depan untuk memastikan keberlanjutan dan efisiensi operasional. Meski demikian, penerapan CBS tidak dapat dilakukan secara seragam mengingat kondisi yang sangat beragam di antara lembaga-lembaga tersebut. Perbedaan dari sisi kapasitas modal, kesiapan infrastruktur, dan adaptasi organisasi menjadi tantangan utama yang perlu diatasi agar transformasi digital dapat berjalan dengan baik.
+POJK 75/POJK.03/2016 tentang Standar Penyelenggaraan Teknologi Informasi BPR menyatakan bahwa setiap BPR wajib menggunakan CBS yang memenuhi persyaratan yang ditetapkan. Meski demikian, implementasi CBS di BPR menghadapi tantangan yang signifikan. Hasil wawancara dengan Ketua Perbarindo DKI Jakarta menunjukkan bahwa dalam lima tahun terakhir, sebanyak 30 persen implementasi CBS di BPR wilayah DKI Jaya mengalami kegagalan. Data dari penelitian OJK dan ILO  \cite{Sitorus2023digital} juga mengungkapkan bahwa 45 persen BPR di Indonesia masih belum sepenuhnya menerapkan CBS sesuai dengan ketentuan dalam POJK. Keterlambatan ini dipengaruhi oleh beragam faktor, termasuk perbedaan kapasitas modal, kesiapan infrastruktur, dan kemampuan organisasi untuk beradaptasi dengan teknologi baru.
 
-Dengan adanya tantangan tersebut, penelitian ini dilakukan untuk memahami lebih dalam mengenai faktor-faktor yang menentukan kesuksesan implementasi CBS pada lembaga keuangan mikro, dengan mengambil studi kasus klien-klien PT Dimensi Kreasi Nusantara. Penelitian ini juga akan mengkaji bagaimana perbedaan kesiapan dan hambatan yang dihadapi oleh lembaga dengan aset besar dan kecil dapat mempengaruhi keberhasilan adopsi teknologi. Misalnya, bank dengan aset besar mungkin memiliki sumber daya lebih untuk mendukung implementasi teknologi dibandingkan dengan bank yang memiliki aset lebih kecil dan operasional yang lebih sederhana. Dengan pemahaman yang mendalam tentang berbagai faktor keberhasilan ini, penelitian ini diharapkan dapat membantu lembaga keuangan mikro dalam proses penerapan CBS guna memaksimalkan manfaat dari core banking system dan mencapai transformasi digital yang lebih komprehensif.
+Dalam Roadmap Pengembangan dan Penguatan Industri BPR dan BPRS (RP2B) 2024-2027 \cite{OJK2024roadmap}, disebutkan bahwa transformasi digital melalui implementasi CBS adalah salah satu prioritas utama untuk meningkatkan daya saing BPR/BPRS, terutama di tengah persaingan dengan bank umum dan perusahaan teknologi finansial (fintech) serta ketertinggalan implementasi dari regulasi yan telah ditetapkan sebelumnya. Dalam hal ini penting bagi BPR yang belum menerapkan CBS untuk mempelajari faktor-faktor keberhasilan dari BPR yang telah sukses mengimplementasikan teknologi ini. Dengan memahami praktik terbaik dan strategi yang diterapkan oleh BPR yang berhasil, diharapkan percepatan implementasi CBS di seluruh BPR dapat tercapai, sehingga lembaga-lembaga ini dapat memanfaatkan teknologi untuk meningkatkan efisiensi, keamanan, dan pelayanan terhadap nasabah. Penelitian ini bertujuan untuk mengidentifikasi faktor-faktor yang menentukan kesuksesan implementasi CBS, dengan mengambil studi kasus pada klien-klien PT Dimensi Kreasi Nusantara. Kajian ini juga akan mengeksplorasi hambatan dan kesiapan implementasi CBS berdasarkan perbedaan skala aset dan kondisi operasional BPR. Dengan demikian, penelitian ini diharapkan dapat memberikan panduan strategis bagi BPR untuk mengoptimalkan transformasi digitalnya melalui CBS.
 
 \subsection{Perumusan Masalah}
 
@@ -195,38 +204,28 @@ Dari sisi \textit{Technology}, penelitian ini akan mengidentifikasi tantangan ya
 Dengan demikian pertanyaan yang diangkat di penelitian ini adalah sebagai berikut:
 \begin{itemize}
     \item Apa saja faktor kunci yang menentukan keberhasilan implementasi \textit{core banking system} pada lembaga keuangan mikro?
-    \item Bagaimana perbedaan faktor keberhasilan di antara berbagai kategori lembaga keuangan mikro berdasarkan kelompok usahanya?
-    \item Apa tantangan utama yang dihadapi dalam implementasi \textit{core banking system} di lembaga keuangan mikro?
 \end{itemize}
 
 \subsection{Tujuan Penelitian}
-Tujuan dari penelitian ini adalah untuk:
-\begin{enumerate}
-    \item Mengidentifikasi faktor kunci keberhasilan dalam implementasi \textit{core banking system} di lembaga keuangan mikro.
-    \item Menganalisis perbedaan faktor keberhasilan berdasarkan kategori lembaga keuangan mikro.
-    \item Mengidentifikasi tantangan yang dihadapi oleh lembaga keuangan mikro dalam implementasi \textit{core banking system}.
-\end{enumerate}
+Tujuan dari penelitian ini adalah untuk mengidentifikasi urutan faktor kunci utama kesuksesan dalam implementasi \textit{core banking system} di lembaga keuangan mikro.
 
 \subsection{Manfaat Penelitian}
-Penelitian ini dapat memberikan wawasan mengenai faktor-faktor kunci yang menentukan keberhasilan implementasi \textit{core banking system}, sehingga dapat membantu lembaga keuangan mikro dalam merencanakan dan menjalankan proyek implementasi teknologi \textit{core banking system} yang lebih efektif. Dengan memahami tantangan dan kebutuhan spesifik, lembaga keuangan dapat memaksimalkan efisiensi, produktivitas, dan pelayanan kepada nasabah.
-
+Penelitian ini dapat memberikan wawasan mengenai urutan faktor-faktor kunci yang menentukan keberhasilan implementasi \textit{core banking system}, sehingga dapat membantu lembaga keuangan mikro dalam memprioritaskan solusi yang sesuai dengan memahami faktor-faktor yang paling berpengaruh terhadap keberhasilan implementasi \textit{core banking system} dan menjalankan proyek implementasi teknologi \textit{core banking system} yang lebih efektif. Dengan memahami tantangan dan kebutuhan spesifik, lembaga keuangan dapat memaksimalkan efisiensi, produktivitas, dan pelayanan kepada nasabah.
 
 % -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 \section{Studi Literatur} \label{sec:Studi Literatrur}
 
-Pada bab ini menjelaskan tentang landasan teori yang digunakan dalam melakukan penelitian, yaitu mengenai \textit{core banking system} dan \textit{critical success factor}. Selain itu pada bab ini akan dibahas mengenai kajian dari hasil - hasil penelitian sebelumnya yang terkait dengan penelitian ini.
+Bagian ini menjelaskan tentang landasan teori yang digunakan dalam melakukan penelitian, yaitu mengenai \textit{core banking system} dan \textit{critical success factor}. Selain itu pada bab ini akan dibahas mengenai kajian dari hasil - hasil penelitian sebelumnya yang terkait dengan penelitian ini.
 
 \subsection{Core Banking System} \label{sec:Core Banking System}
 
 \textit{Core Banking System} (CBS) adalah sistem informasi terpusat yang memungkinkan bank memproses dan mengelola berbagai transaksi finansial dan layanan perbankan secara real-time. CBS mencakup fungsi-fungsi dasar perbankan seperti transfer dana, pengelolaan akun, deposito, dan peminjaman. Sistem ini diakses oleh cabang-cabang bank dan platform digital secara langsung, sehingga menciptakan efisiensi dan konsistensi layanan perbankan. CBS merupakan "jantung" operasional bank yang mengotomatisasi sebagian besar proses internal dan eksternal untuk memastikan kelancaran transaksi harian serta pengelolaan data nasabah dengan aman dan cepat \cite{Hsiao-ebanking}.
 
-\subsubsection{Manfaaat}
 
 CBS memberikan banyak manfaat bagi institusi perbankan, termasuk efisiensi operasional yang lebih tinggi, integrasi data yang lebih baik, serta peningkatan pengalaman nasabah. Kualitas sistem dan informasi yang baik dapat meningkatkan kepuasan pengguna internal dan eksternal. Di PT Bank Perkreditan Rakyat (BPR) Hasamitra, kualitas sistem dan manfaat sistem CBS terbukti berpengaruh positif terhadap kinerja bank, termasuk penyediaan layanan yang lebih cepat dan andal \cite{basyir-cbs}. CBS juga memfasilitasi pengambilan keputusan yang lebih baik melalui integrasi data yang efektif, yang pada gilirannya meningkatkan daya saing bank di pasar \cite{pratama-cbs}.
 
-\subsubsection{Tantangan Implementasi}
 
 Meskipun CBS menawarkan berbagai manfaat, implementasi sistem ini dihadapkan pada sejumlah tantangan, terutama dalam hal adaptasi teknologi dan manajemen perubahan. Di Vietnam, penelitian menunjukkan bahwa kualitas layanan menjadi tantangan terbesar dalam memastikan kepuasan pengguna CBS, yang sering kali terhambat oleh ketergantungan pada infrastruktur teknologi yang ketinggalan zaman \cite{Hsiao-ebanking}. Selain itu, audit sistem CBS menggunakan ITIL menggarisbawahi perlunya pengelolaan siklus hidup layanan yang tepat untuk menghindari kegagalan operasional dan memastikan keberlanjutan sistem dalam jangka panjang \cite{wahyudi-cbs}. Implementasi CBS juga memerlukan penyesuaian budaya organisasi dan pelatihan intensif bagi karyawan untuk mengoptimalkan penggunaannya.
 
@@ -236,6 +235,16 @@ Meskipun CBS menawarkan berbagai manfaat, implementasi sistem ini dihadapkan pad
 \subsubsection{Manfaat Identifikasi \textit{Critical Success Factors} (CSF)}
 Mengidentifikasi dan memahami CSF dalam pengembangan sistem informasi memberikan berbagai manfaat penting. CSF membantu organisasi memastikan bahwa faktor-faktor utama yang mempengaruhi keberhasilan proyek sistem informasi dikelola dengan baik sejak awal. Dalam sistem informasi kesehatan, penerapan dan manajemen CSF secara prospektif dapat membantu dalam adaptasi situasional dan mengurangi risiko kegagalan sistem \cite{aggestam2023apply}. Lebih jauh lagi, pemahaman yang jelas tentang CSF memungkinkan organisasi untuk mengalokasikan sumber daya secara efektif, meningkatkan kepuasan pengguna, dan memastikan sistem tetap relevan dengan kebutuhan operasional dan teknologi yang berubah-ubah. Studi-studi menunjukkan bahwa pengelolaan CSF yang baik dapat mempercepat proses adopsi teknologi, meningkatkan produktivitas, dan mengurangi hambatan dalam pengembangan sistem informasi \cite{jayakody2023devops}.
 
+\subsection{Analytic Hierarchy Process (AHP)}
+
+Analytic Hierarchy Process (AHP) adalah metode pengambilan keputusan yang dikembangkan oleh Thomas Saaty pada tahun 1980 \cite{Saaty}, digunakan untuk menyelesaikan masalah kompleks dengan berbagai kriteria. AHP menyusun masalah dalam struktur hierarki, dengan tujuan utama di bagian atas dan kriteria di bawahnya, kemudian mengevaluasi dan menentukan prioritas elemen-elemen tersebut melalui tiga langkah utama: konstruksi hierarki, analisis prioritas dengan perbandingan berpasangan, dan verifikasi konsistensi. Meskipun memberikan pendekatan terstruktur untuk pengambilan keputusan yang jelas dan konsisten, AHP memiliki kelemahan dalam menangani informasi yang tidak pasti atau ambigu, karena metode ini mengandalkan perbandingan pasti yang mungkin tidak dapat diterapkan dengan baik pada situasi dengan data yang tidak lengkap atau subjektif \cite{fahpbook}.
+
+
+\subsection{Fuzzy Analytic Hierarchy Process (Fuzzy-AHP)}
+
+Fuzzy-AHP adalah pengembangan dari AHP tradisional yang mengatasi data yang tidak tepat atau kabur dengan menggunakan logika fuzzy. Alih-alih bergantung pada angka yang pasti, Fuzzy-AHP menggunakan angka fuzzy untuk mewakili penilaian yang kabur sehingga memungkinkan pengambil keputusan untuk menyatakan preferensi mereka dengan istilah seperti "sedikit lebih penting" atau "jauh lebih penting." Fuzzy-AHP membantu mengelola ketidakpastian dalam pengambilan keputusan dengan memberikan derajat keanggotaan (\textit{membership degrees}) pada angka fuzzy tersebut \cite{liu-fahp}.
+
+Proses membangun model Fuzzy-AHP meliputi pembuatan matriks perbandingan, menggabungkan berbagai penilaian, memeriksa konsistensi, dan mengubah bobot fuzzy menjadi nilai pasti (defuzzifikasi). Namun, penggunaan himpunan fuzzy membuat perhitungan lebih kompleks karena metode tradisional seperti eigenvektor dan rata-rata geometrik tidak dapat diterapkan langsung pada matriks perbandingan fuzzy. Walaupun demikian, Fuzzy-AHP sangat berguna dalam situasi dunia nyata di mana data tidak jelas atau tidak pasti dengan memberikan pendekatan yang fleksibel untuk pengambilan keputusan \cite{liu-fahp}.
 
 \subsection{Penelitian Terdahulu} \label{sec:Penelitian Terdahulu}
 
@@ -247,11 +256,44 @@ Studi lain \cite{salu-csf} di sektor perbankan India menyoroti sepuluh faktor su
 
 Kesuksesan implementasi CBS juga dipengaruhi oleh kesiapan organisasi dalam mengelola perubahan \cite{johny-csf}. Studi ini menemukan bahwa implementasi CBS yang efektif memerlukan pemahaman mendalam tentang proses implementasi, tantangan teknis, serta kesiapan teknologi dan tenaga kerja. Kurangnya pelatihan dan keterampilan teknis dapat menyebabkan kegagalan implementasi sistem CBS yang kompleks \cite{johny-csf}.
 
-
+Kajla et al. (2021) mengkaji faktor-faktor kritis yang mempengaruhi adopsi \textit{blockchain} di sektor perbankan dengan menggunakan kerangka kerja Technology-Organization-Environment (TOE) dan Fuzzy Analytic Hierarchy Process (Fuzzy-AHP). Meskipun fokus penelitian ini adalah adopsi blockchain, metode Fuzzy-AHP yang digunakan juga relevan dengan penelitian tentang implementasi CBS. Penulis menggunakan Fuzzy-AHP dalam penelitian mereka karena memungkinkan integrasi pendapat ahli \cite{KajlaFAHP}. Penelitian lain menggunakan FAHP untuk memprioritaskan faktor-faktor kunci keberhasilan (CSF) pada proyek TI di sektor perbankan, asuransi, dan ritel. FAHP digunakan karena memungkinkan penilaian yang fleksibel dengan menggunakan nilai interval. Dengan mengintegrasikan logika fuzzy dalam pengambilan keputusan multi-kriteria, FAHP memberikan kerangka kerja yang lebih terstruktur untuk memprioritaskan faktor-faktor yang mempengaruhi keberhasilan proyek TI \cite{Siddique-fahp}.
 
 % -------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Metodologi}
+Penelitian ini menggunakan pendekatan kuantitatif dengan menggunakan data yang dikumpulkan dari kuesioner yang dirancang berdasarkan hierarki CSF implementasi CBS. Terdapat 19 responden, 2 responden merupakan karyawan System Implementor CBS di PT DKN, dan 17 lainnya merupakan orang yang bertanggung jawab atas implementasi CBS dari 9 BPR dengan jabatan sebagai Pejabat Eksekutif (PE) atau Direksi. Kemudian responden diminta untuk meninjau dan mengisi kuesioner yang berisi faktor-faktor keberhasilan implementasi \textit{core banking system}. Setelah responden mengisi kuesioner yang diberikan, urutan dari faktor-faktor kesuksesan dicari menggunakan Fuzzy-AHP. CSF harus diidentifikasi untuk mengurangi tingkat kegagalan implementasi \textit{core banking system} \cite{aggestam2023apply}. Figure \ref{fig:tahapan} di bawah merupakan ringkasan dari tahapan penelitian.
+
+% \begin{figure}[H]
+% \includegraphics[width=6 cm]{attachments/tahapan.png}
+% \caption{Tahapan Penelitian \label{fig:tahapan}}
+% \end{figure}   
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+        \tikzstyle{step} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=lightgray]
+        \tikzstyle{arrow} = [thick,->,>=stealth]
+        \tikzstyle{box} = [draw=black, thick, inner sep=0.2cm]
+        
+        % Nodes
+        \node (problem) [box] {Perumusan Masalah};
+        \node (literature) [box, below of=problem] {Studi Literatur};
+        \node (hierarchy) [box, below of=literature] {Membuat Struktur Hierarki CSF implementasi CBS};
+        \node (questionnaire) [box, below of=hierarchy] {Merancang dan Menyebarkan Kuisioner};
+        \node (processing) [box, below of=questionnaire] {Memproses Data Menggunakan Fuzzy-AHP};
+        \node (analysis) [box, below of=processing] {Analisis Hasil Penelitian dan Membuat Kesimpulan};
+
+        % Arrows
+        \draw [arrow] (problem) -- (literature);
+        \draw [arrow] (literature) -- (hierarchy);
+        \draw [arrow] (hierarchy) -- (questionnaire);
+        \draw [arrow] (questionnaire) -- (processing);
+        \draw [arrow] (processing) -- (analysis);
+
+    \end{tikzpicture}
+    \caption{Langkah-langkah Penelitian}
+     \label{fig:tahapan}}
+\end{figure}
 
 % People
 % - Dukungan manajemen senior \cite{Ghafari-csf} \cite{falisat-csf} 
@@ -271,12 +313,13 @@ Kesuksesan implementasi CBS juga dipengaruhi oleh kesiapan organisasi dalam meng
 % - Integrasi Sistem \cite{Ghafari-csf}
 % - Performa dan kecepatan sistem \cite{Ghafari-csf}
 
+\subsection{Critical Success Factor CBS}
+
 
 \textit{Critical Success Factors} (CSF) sistem core banking diidentifikasi melalui tinjauan pustaka dari jurnal sistem informasi berkualitas tinggi yang diterbitkan antara tahun 2016 dan 2024 \cite{Ghafari-csf} \cite{falisat-csf} \cite{salu-csf} \cite{johny-csf}. Tinjauan ini difokuskan pada database seperti IEEE Xplore, ScienceDirect, dan ProQuest. Kata kunci yang digunakan untuk pencarian pustaka mencakup "\textit{critical success factors}", “\textit{success factors}”, "\textit{core banking system}", "\textit{banking system}", dan beberapa lainnya. CSF yang diteliti dapat dilihat pada tabel \ref{csf-table}
 
 
-
-\begin{table}[H]
+\begin{table}[h!]
 \begin{adjustwidth}{-\extralength}{0cm}
     \caption{Critical Success Factors (CSFs) dalam Implementasi Sistem Informasi}
     \label{csf-table}
@@ -313,98 +356,190 @@ Kesuksesan implementasi CBS juga dipengaruhi oleh kesiapan organisasi dalam meng
 \end{adjustwidth}
 \end{table}
 
+% \begin{longtable}{c|c|p{4cm}|p{6cm}|c}
 
-Setelah melakukan tinjaun pustaka, langkah-langkah dari \textit{Analytical Hierarchy Process} (AHP) diaplikasikan untuk merancang hierarki yang berisi tujuan, kriteria untuk mencapai tujuan, dan alternatif. AHP adalah metode sistematis untuk mengatasi tantangan dalam proses pengambilan keputusan dengan menggunakan prinsip-prinsip dari matematika. Metode ini menawarkan cara yang jelas dan terorganisasi untuk mengukur berbagai faktor yang terlibat dalam pengambilan keputusan dalam hierarki. Prosesnya dimulai dengan mengidentifikasi kriteria untuk keputusan tersebut \cite{Tavana2021AnalyticalHP}. Hasil dari penggunaan AHP adalah urutan faktor-faktor kesuksesan yang memengaruhi implementasi \textit{core banking system} pada lembaga keuangan mikro.
+%     \caption{Critical Success Factors (CSFs) dalam Implementasi Sistem Informasi} \label{csf-table} \\
+%     \hline
+%     \textbf{Context} & \textbf{CSF Code} & \textbf{Critical Success Factors} & \textbf{Penjelasan Singkat} & \textbf{Reference} \\
+%     \hline
+%     \endfirsthead
+%     % Head for the first page
+%     \multicolumn{5}{c}{\textit{Lanjutan dari halaman sebelumnya}} \\
+%     \hline
+%     \textbf{Context} & \textbf{CSF Code} & \textbf{Critical Success Factors} & \textbf{Penjelasan Singkat} & \textbf{Reference} \\
+%     \hline
+%     \endhead
+%     % Head for subsequent pages
+%     \hline
+%     \multicolumn{5}{|r|}{\textit{Lanjut ke halaman berikutnya}} \\
+%     \hline
+%     \endfoot
+%     % Foot for all pages
+%     \hline
+%     \endlastfoot
+%     % Foot for the last page
+%     \begin{adjustwidth}{-\extralength}{0cm}
+%     \textbf{People} & PP1 & \raggedright Dukungan manajemen senior & \raggedright Keterlibatan manajemen senior sangat penting dalam alokasi sumber daya dan arah proyek. & \cite{Ghafari-csf}, \cite{falisat-csf} \\ 
+%     \hline
+%     \textbf{People} & PP2 & \raggedright Alokasi sumber daya & \raggedright Sumber daya yang memadai diperlukan untuk keberhasilan implementasi sistem. & \cite{falisat-csf} \\ 
+%     \hline
+%     \textbf{People} & PP3 & \raggedright Kompatibilitas Teknologi & \raggedright Teknologi yang kompatibel dengan infrastruktur yang ada sangat penting untuk integrasi yang lancar. & \cite{salu-csf}, \cite{johny-csf} \\ 
+%     \hline
+%     \textbf{People} & PP4 & \raggedright Perubahan manajemen dan Adaptasi User & \raggedright Manajemen perubahan yang baik membantu pengguna beradaptasi dengan sistem baru. & \cite{Ghafari-csf} \\ 
+%     \hline
+%     \textbf{Process} & PR1 & \raggedright Rekayasa ulang proses bisnis & \raggedright Proses bisnis perlu direkayasa ulang untuk mendukung implementasi sistem yang lebih efisien. & \cite{falisat-csf} \\ 
+%     \hline
+%     \textbf{Process} & PR2 & \raggedright Kebutuhan sistem yang jelas & \raggedright Kebutuhan sistem yang jelas membantu memastikan kesuksesan implementasi. & \cite{johny-csf} \\ 
+%     \hline
+%     \textbf{Process} & PR3 & \raggedright Standar operasional yang jelas & \raggedright Standar operasional diperlukan untuk menjaga konsistensi dan efisiensi. & \cite{salu-csf} \\ 
+%     \hline
+%     \textbf{Process} & PR4 & \raggedright Mitigasi dan manajemen risiko & \raggedright Penting untuk mengidentifikasi dan mengelola risiko untuk mencegah kegagalan sistem. & \cite{falisat-csf} \\ 
+%     \hline
+%     \textbf{Teknologi} & TT1 & \raggedright Keamanan yang kuat & \raggedright Keamanan data adalah prioritas utama untuk melindungi informasi sensitif. & \cite{falisat-csf} \\ 
+%     \hline
+%     \textbf{Teknologi} & TT2 & \raggedright Skalabilitas infrastruktur IT & \raggedright Infrastruktur IT harus dapat diskalakan untuk mendukung pertumbuhan masa depan. & \cite{Ghafari-csf}, \cite{salu-csf} \\ 
+%     \hline
+%     \textbf{Teknologi} & TT3 & \raggedright Integrasi Sistem & \raggedright Sistem baru harus terintegrasi dengan lancar dengan sistem yang ada. & \cite{Ghafari-csf} \\ 
+%     \hline
+%     \textbf{Teknologi} & TT4 & \raggedright Performa dan kecepatan sistem & \raggedright Performa sistem yang cepat meningkatkan efisiensi operasional dan kepuasan pengguna. & \cite{Ghafari-csf} \\ 
+%     \end{adjustwidth}
+% \end{longtable}
 
-Penelitian ini menggunakan pendekatan kuantitatif dengan menggunakan data yang dikumpulkan dari kuesioner yang dirancang berdasarkan hierarki yang telah dibuat sebelumnya mengunakan langkah-langkah AHP. Jumlah responden yang mengisi kuesioner adalah 12 orang yang berasal dari 6 organisasi yang berbeda. Responden yang dipilih adalah 1 direktur atau ketua organisasi dan 1 ketua \textit{project} dari setiap organisasi. Responden diminta untuk meninjau dan mengisi kuesioner yang berisi faktor-faktor keberhasilan implementasi \textit{core banking system}. Kemudian, responden memberikan nilai pada pertanyaan di kuesioner. 
+\subsection{Sample dan Populasi}
+Populasi dalam penelitian ini adalah Bank Perkreditan Rakyat (BPR) yang telah berhasil mengimplementasikan Core Banking System. Sampel yang diambil merupakan representasi karyawan dari masing-masing kelompok usaha BPR.
 
-Setelah responden mengisi kuesioner yang diberikan peneliti, urutan dari faktor-faktor kesuksesan dicari menggunakan langkah AHP selanjutnya yaitu menghitung rasio konsistensi atau \textit{consistency ratio} (CR). CSF harus diidentifikasi untuk mengurangi tingkat kegagalan implementasi \textit{core banking system} \cite{aggestam2023apply}. Figure \ref{fig:tahapan} di bawah merupakan ringkasan dari tahapan penelitian.
+\subsection{Instrumen}
+Instrumen dalam penelitian ini adalah kuisioner yang terdiri dari lima bagian. Bagian pertama dari survei berisi data pribadi responden. Bagian kedua berisi komparasi terhadap kriteria People, Process, dan Technology. Bagian-bagian selanjutnya berisi komparasi masing-masing Critical Success Factor (CSF) dari People, Process, dan Technology. Skala yang digunakan adalah skala Linguistik, yang dapat dilihat pada Tabel \ref{tab:fuzzy-segitiga}.
 
-\begin{figure}[H]
-\includegraphics[width=6 cm]{attachments/tahapan.png}
-\caption{Tahapan Penelitian \label{fig:tahapan}}
-\end{figure}   
+\subsection{Pengumpulan Data}
+Distribusi kuisioner dilakukan menggunakan platform Formbricks dengan tautan \url{https://app.formbricks.com/s/cm3bidub8000afrf8qw41o4fh}. Tautan ini diberikan secara individu kepada setiap responden. Survei dilaksanakan mulai dari 11 November 2024 hingga 1 Desember 2024.
 
-\subsection{Analytical Hierarchy Process (AHP)}
-\textit{Analytical Hierarchy Process} (AHP) adalah sebuah teknik yang diperkenalkan oleh Dr. Thomas Saaty pada tahun 1990 melalui penelitiannya yang berjudul “\textit{How to make a decision: The analytic hierarchy process}”. AHP digunakan untuk membantu organisasi membuat keputusan yang tepat melalui analisis solusi alternatif \cite{Jacob2021}. 
-%Tahapan dari penggunaan teknik AHP adalah sebagai berikut \cite{Jacob2021}:
-%\begin{enumerate}
-%    \item Mendefinisikan masalah dan kriteria yang ingin dievaluasi.
-%    \item Membuat struktur hirarki dengan tujuan di paling atas, kriteria dan sub-kriteria di tengah, serta alternatif di bagian bawah.
-%    \item Menentukan nilai penting dari setiap kriteria.
-%\end{enumerate}
 
-Teknik AHP diaplikasikan dengan menggunakan kuesioner matriks AHP berdasarkan faktor-faktor kesuksesan yang telah diidentifikasi sebelumnya. Terdapat skala angka dari 1 sampai 9 dengan keterangan sebagai berikut \cite{Saaty1990}:
-\begin{itemize}
-    \item 1: Kriteria yang sama pentingnya dengan kriteria lain.
-    \item 3: Kriteria sedikit lebih penting dari yang lain.
-    \item 5: Kriteria lebih penting dari yang lain.
-    \item 7: Kriteria sangat penting dari yang lain.
-    \item 9: Kriteria yang penting secara absolut dari yang lain.
-    \item Nilai di antaranya merepresentasikan nilai tengah.
-\end{itemize}
+\subsection{Fuzzy Analytical Hierarchy Process (Fuzzy-AHP)}
 
-Berdasarkan penelitian yang dilakukan oleh Singh \cite{Singh2019}, langkah-langkah teknik AHP adalah sebagai berikut:
-\begin{enumerate}
-    \item Menentukan tujuan dan kriteria untuk mencapainya.
-    \item Mencari solusi alternatif untuk mencapai tujuan.
-    \item Menentukan nilai setiap kriteria menggunakan matriks, untuk mencari nilai penting dari setiap kriteria.
-    \item Membandingkan setiap pasangan kriteria menggunakan angka yang diperoleh dari matriks AHP, dengan memberikan urutan seberapa besar satu kriteria dibandingkan dengan yang lain.
-    \item Menghitung prioritas relatif gabungan setiap kriteria untuk mengetahui nilai keseluruhan untuk setiap kriteria.
-\end{enumerate}
+Fuzzy-AHP merupakan pengembangan dari metode AHP \cite{Saaty}. Dalam penelitian ini, Fuzzy-AHP yang digunakan mengacu pada metode yang dikembangkan oleh Buckley pada tahun 1985 \cite{buckley-fahp}. Metode ini menggunakan bilangan fuzzy segitiga untuk skala perbandingan berpasangan dalam Fuzzy AHP untuk menggantikan bilangan pasti pada skala Saaty. Metode ini mengatasi ketidakpastian yang sering kali muncul dalam masalah pengambilan keputusan dunia nyata dan memungkinkan pengambilan keputusan berdasarkan penilaian subjektif yang lebih fleksibel. Saat ini, Fuzzy-AHP juga banyak digunakan di berbagai bidang seperti bisnis, manajemen, manufaktur, industri, dan pemerintahan \cite{fahpbook}.
+
+\begin{table}[H]
+    \caption{Bilangan Fuzzy Segitiga yang Digunakan}
+    \label{tab:fuzzy-segitiga}
+    \centering
+    \begin{tabular}{c|c|c}
+        \toprule
+        \textbf{Skala Linguistik} & \textbf{Bilangan Fuzzy Segitiga} & \textbf{Bilangan Fuzzy Segitiga Resiprokal}\\ 
+        \midrule
+        \raggedright Mutlak Lebih Penting & (9,9,9) & (1/9,1/9,1/9) \\ 
+        \midrule
+        \raggedright Sangat Lebih Penting & (6,7,8) & (1/8,1/7,1/6) \\ 
+        \midrule
+        \raggedright Cukup Lebih Penting & (4,5,6) & (1/6,1/5,1/4) \\ 
+        \midrule
+        \raggedright Sedikit Lebih Penting & (2,3,4) & (1/4,1/3,1/2) \\ 
+        \midrule
+        \raggedright Sama Pentingnya & (1,1,1) & (1,1,1) \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+Penjelasan detail mengenai tahapan-tahapan perhitungan metode Fuzzy-AHP akan diuraikan sebagai berikut.
 
 Pada tahap perbandingan, penelitian ini menggunakan metode \textit{pairwise comparison}. Dalam proses ini, ditentukan seberapa penting setiap kriteria dibandingkan dengan kriteria lainnya dengan terlebih dahulu membuat matriks penilaian resiprokal $n \times n$ berdasarkan perbandingan kriteria. Matriks perbandingan (\textit{Matriks A}) dibuat menggunakan data yang dikumpulkan dari kuesioner dan wawancara dengan para ahli yang terlibat dalam proses pengambilan keputusan \cite{Singh2019}. Matriks perbandingan dapat dilihat pada persamaan \ref{eq:matriks_a}
 
 \begin{equation}
 A = \begin{bmatrix}
-a_{11} & a_{12} & \cdots & a_{1m} \\
-a_{21} & \cdots & \cdots & a_{2m} \\
+(1,1,1) & a_{12} & \cdots & a_{1m} \\
+a_{21} & (1,1,1) & \cdots & a_{2m} \\
 \vdots & \vdots & \ddots & \vdots \\
-a_{m1} & \cdots & \cdots & a_{mm}
-\end{bmatrix} = 
+a_{m1} & \cdots & \cdots & (1,1,1)
+\end{bmatrix} =
 \begin{bmatrix}
-1 & a_{12} & \cdots & a_{1m} \\
-\frac{1}{a_{12}} & 1 & \cdots & a_{2m} \\
+(1,1,1) & a_{12} & \cdots & a_{1m} \\
+\frac{1}{a_{12}} & (1,1,1) & \cdots & a_{2m} \\
 \vdots & \vdots & \ddots & \vdots \\
-\frac{1}{a_{1m}} & \cdots & \cdots & 1
+\frac{1}{a_{1m}} & \cdots & \cdots & (1,1,1)
 \end{bmatrix}
 \label{eq:matriks_a}
 \end{equation}
 
-Setelah pembuatan matriks \ref{eq:matriks_a}, dilakukan normalisasi terhadap matriks dengan rumus normalisasi pada persamaan \ref{eq:normalisasi} \cite{Singh2019}.
-
+Dalam Fuzzy-AHP, perbandingan berpasangan dilakukan dengan menggunakan bilangan fuzzy, biasanya dalam bentuk bilangan fuzzy segitiga atau textit{triangular fuzzy numbers} (TFN), yang dinyatakan sebagai:
 \begin{equation}
-x_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}
-\label{eq:normalisasi}
+\[
+(l, m, u)
+\]
+\label{eq:wj}
 \end{equation}
 
-Kemudian dihitung bobot prioritas setiap pasangan kriteria dengan rumus pada persamaan \ref{eq:bobot_prioritas} \cite{Singh2019}:
+di mana:
+\begin{itemize}
+    \item \( l \): nilai lower boundary
+    \item \( m \): nilai middle
+    \item \( u \): nilai upper boundary
+\end{itemize}
 
+% dimana \( l \): nilai lower boundary,  \( m \): nilai middle, \( u \): nilai upper boundary
+
+Matriks perbandingan berpasangan fuzzy dapat dinyatakan sebagai berikut:
 \begin{equation}
-P_j = \frac{1}{n} \sum_{i=1}^{n} a_{ij}
-\label{eq:bobot_prioritas}
+\[
+\begin{bmatrix}
+1 & F_{12} & F_{13} \\
+F_{21} & 1 & F_{23} \\
+F_{31} & F_{32} & 1
+\end{bmatrix}
+\]
+\label{eq:f_matrix}
 \end{equation}
 
-Setelah itu, dilakukan pengecekan terhadap nilai relatif bobot menggunakan matriks perbandingan (A) dan eigenvector paling besar $\lambda_{\text{max}}$ dengan rumus pada persamaan \ref{eq:cek_nilai} \cite{Singh2019}:
-\begin{equation}
-AP_i = \lambda_{\text{max}} P_i \quad (i = 1, 2, 3, \ldots, n)
-\label{eq:cek_nilai}
-\end{equation}
+Di mana \( F_{ij} \) adalah bilangan fuzzy yang merepresentasikan perbandingan antara kriteria \( i \) dan \( j \).
 
-Kemudian dilakukan kalkulasi untuk mencari \textit{Consistency Index} (CI) dengan rumus pada persamaan \ref{eq:ci} \cite{Singh2019}:
-\begin{equation}
-CI = \frac{\lambda_{\text{max}} - n}{n - 1}
-\label{eq:ci}
-\end{equation}
+\subsubsection{Geometric Mean Method}
 
-Tahap terakhir adalah menghitung \textit{Consistency Ratio} (CR). Nilai CR harus sekitar 0,1 supaya dianggap dapat diterima. Rumus untuk menghitung CR dapat dilihat pada persamaan \ref{eq:cr} \cite{Singh2019}:
+Metode Geometric sudah dikembangkan sebelumnya oleh \cite{buckley-fahp} dengan Langkah-langkah sebagai berikut:
 
-\begin{equation}
-CR = \frac{CI}{RI}
-\label{eq:cr}
-\end{equation}
+\begin{enumerate}
+    \item Hitung produk dari setiap kolom dalam matriks perbandingan berpasangan:
+    \begin{equation}
+        P_j = \prod_{i=1}^{n} F_{ij}
+    \end{equation}
+    \label{eq:pj}
+    Di mana \( P_j \) adalah produk dari kolom ke-j (lihat persamaan \ref{eq:pj}).
 
-RI adalah \textit{Random Index} yang biasanya diperoleh dari tabel yang telah ditetapkan berdasarkan jumlah perbandingan (n) yang dilakukan \cite{Singh2019}. RI dapat dilihat pada tabel \ref{random-index}.
+    \item Hitung geometric mean untuk setiap kolom:
+    \begin{equation}
+        GM_j = P_j^{\frac{1}{n}}
+    \end{equation}
+    \label{eq:gm}
+    Geometric mean dapat dihitung menggunakan persamaan \ref{eq:gm}.
+
+    \item Normalisasi bobot fuzzy dilakukan dengan membagi setiap bobot dengan jumlah total bobot:
+    \begin{equation}
+        W_j = \frac{GM_j}{\sum_{k=1}^{n} GM_k}
+    \end{equation}
+    \label{eq:wj}
+    Persamaan \ref{eq:wj} menunjukkan bagaimana bobot normalisasi dihitung.
+
+    \item Setelah mendapatkan bobot fuzzy, langkah selanjutnya adalah melakukan defuzzifikasi untuk mendapatkan nilai crisp. Salah satu metode yang umum digunakan adalah metode \textit{best non-fuzzy performance}:
+    \begin{equation}
+        O_{m}=\frac{[FO(L)_{m}+FO(M)_{m}+FO(U)_{m}]}{3}
+    \end{equation}
+    \label{eq:w}
+    \item 
+    Defuzzifikasi dilakukan dengan menggunakan persamaan \ref{eq:w} yang melibatkan dimana  \( FO(L)_{m} \) \( FO(M)_{m} \) \( FO(U)_{m} \) merepresentasikan nilai \textit{lower}, \textit{middle}, dan \textit{upper boundary}
+
+    \item Kemudian dilakukan kalkulasi untuk mencari \textit{Consistency Index} (CI) dengan rumus pada persamaan \ref{eq:ci} \cite{Singh2019}:
+    \begin{equation}
+        CI = \frac{\lambda_{\text{max}} - n}{n - 1}
+    \end{equation}
+    \label{eq:ci}
+    Persamaan \ref{eq:ci} digunakan untuk menghitung Indeks Konsistensi (CI).
+
+    \item Tahap terakhir adalah menghitung \textit{Consistency Ratio} (CR). Nilai CR harus sekitar 0,1 supaya dianggap dapat diterima. Rumus untuk menghitung CR dapat dilihat pada persamaan \ref{eq:cr} \cite{Singh2019}:
+    \begin{equation}
+        CR = \frac{CI}{RI}
+    \end{equation}
+    \label{eq:cr}
+    Persamaan \ref{eq:cr} digunakan untuk menghitung \textit{Consistency Ratio} (CR). Nilai CR diperoleh dengan membagi CI dengan nilai \textit{Random Index} (RI) yang ditentukan dalam tabel \ref{random-index}.
+\end{enumerate}
 
 \begin{table}[H]
     \caption{Random Index (RI)}
@@ -420,11 +555,394 @@ RI adalah \textit{Random Index} yang biasanya diperoleh dari tabel yang telah di
 \end{table}
 
 
+% \subsection{Geometric Mean Method}
+% Metode Geometric sudah dikembangkan sebelumnya oleh \cite{buckley-fahp} dengan Langkah-langkah sebagai berikut:
+
+%   Hitung produk dari setiap kolom dalam matriks perbandingan berpasangan:
+% \begin{equation}
+%   \[
+%   P_j = \prod_{i=1}^{n} F_{ij}
+%   \]
+% \label{eq:pj}
+% \end{equation}
+%   Di mana \( P_j \) adalah produk dari kolom ke-j.
+
+%   Hitung geometric mean untuk setiap kolom:
+% \begin{equation}
+%   \[
+%   GM_j = P_j^{\frac{1}{n}}
+%   \]
+% \label{eq:gm}
+% \end{equation}
+
+%   Normalisasi bobot fuzzy dilakukan dengan membagi setiap bobot dengan jumlah total bobot:
+% \begin{equation}
+%   \[
+%   W_j = \frac{GM_j}{\sum_{k=1}^{n} GM_k}
+%   \]
+% \label{eq:wj}
+% \end{equation}
+
+% Setelah mendapatkan bobot fuzzy, langkah selanjutnya adalah melakukan defuzzifikasi untuk mendapatkan nilai crisp. Salah satu metode yang umum digunakan adalah metode centroid:
+% \begin{equation}
+% \[
+% W = \frac{1}{u - l} \int_{l}^{u} x f(x) dx
+% \]
+% \label{eq:w}
+% \end{equation}
+% Di mana \( f(x) \) adalah fungsi densitas probabilitas dari bilangan fuzzy.
+
+
+% Kemudian dilakukan kalkulasi untuk mencari \textit{Consistency Index} (CI) dengan rumus pada persamaan \ref{eq:ci} \cite{Singh2019}:
+% \begin{equation}
+% CI = \frac{\lambda_{\text{max}} - n}{n - 1}
+% \label{eq:ci}
+% \end{equation}
+
+% Tahap terakhir adalah menghitung \textit{Consistency Ratio} (CR). Nilai CR harus sekitar 0,1 supaya dianggap dapat diterima. Rumus untuk menghitung CR dapat dilihat pada persamaan \ref{eq:cr} \cite{Singh2019}:
+
+% \begin{equation}
+% CR = \frac{CI}{RI}
+% \label{eq:cr}
+% \end{equation}
+
+% RI adalah \textit{Random Index} yang biasanya diperoleh dari tabel yang telah ditetapkan berdasarkan jumlah perbandingan (n) yang dilakukan \cite{Singh2019}. RI dapat dilihat pada tabel \ref{random-index}.
+
+% \begin{table}[H]
+%     \caption{Random Index (RI)}
+%     \label{random-index}
+%     \centering
+%     \begin{tabular}{c|ccccccccccc}
+%         \toprule
+%         $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+%         \midrule
+%         RI & 0 & 0 & 0.58 & 0.9 & 1.12 & 1.24 & 1.32 & 1.41 & 1.45 & 1.49 & 1.51 \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+
+% Setelah pembuatan matriks \ref{eq:matriks_a}, dilakukan normalisasi terhadap matriks dengan rumus normalisasi pada persamaan \ref{eq:normalisasi} \cite{Singh2019}.
+
+% \begin{equation}
+% x_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}
+% \label{eq:normalisasi}
+% \end{equation}
+
+% Kemudian dihitung bobot prioritas setiap pasangan kriteria dengan rumus pada persamaan \ref{eq:bobot_prioritas} \cite{Singh2019}:
+
+% \begin{equation}
+% P_j = \frac{1}{n} \sum_{i=1}^{n} a_{ij}
+% \label{eq:bobot_prioritas}
+% \end{equation}
+
+% Setelah itu, dilakukan pengecekan terhadap nilai relatif bobot menggunakan matriks perbandingan (A) dan eigenvector paling besar $\lambda_{\text{max}}$ dengan rumus pada persamaan \ref{eq:cek_nilai} \cite{Singh2019}:
+% \begin{equation}
+% AP_i = \lambda_{\text{max}} P_i \quad (i = 1, 2, 3, \ldots, n)
+% \label{eq:cek_nilai}
+% \end{equation}
+
+
+
+\section{Analisis Data dan Diskusi}
+
+\subsection{Demografi Responden}
+
+Data dikumpulkan menggunakan kuesioner berbasis skala Analytic Hierarchy Process (AHP) yang melibatkan 19 responden. Responden terdiri dari 2 karyawan System Implementor CBS di PT DKN dan 17 Person in Charge (PIC) implementasi CBS dari 9 BPR. BPR yang disampling dalam penelitian ini adalah BPR yang telah sukses mengimplementasi CBS. Responden PIC memiliki jabatan sebagai Pejabat Eksekutif (PE) atau Direksi. 
+
+Distribusi responden berdasarkan kategori modal inti BPR adalah sebagai berikut:
+\begin{enumerate}
+    \item 5 BPR masuk dalam kategori BPRKU 1, dengan modal inti kurang dari IDR 15 miliar.
+    \item 2 BPR masuk dalam kategori BPRKU 2, dengan modal inti antara IDR 15-50 miliar.
+    \item 2 BPR masuk dalam kategori BPRKU 3, dengan modal inti lebih dari IDR 50 miliar.
+\end{enumerate}
+
+
+
+
+\subsection{Analisis Data}
+
+
+Hasil dari responden dibuah menjadi pairwise matrix untuk menghitung \textit{Consistency Ratio} dengan hasil yang dapat dilihat pada Figure \ref{fig:saaty_scale_cr}.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{attachments/saaty_scale_cr.png}
+\caption{CR Individu}
+\label{fig:saaty_scale_cr}
+\end{figure}   
+
+Nilai CR yang dihasilkan menunjukkan adanya inkonsistensi dalam penilaian antar kriteria. Untuk mengatasi masalah ini, dilakukan perhitungan ulang menggunakan metode Fuzzy AHP. 
+
+Konversi nilai responden dari AHP biasa ke Fuzzy AHP menggunakan mapping seperti yang sudah tertulis pada Tabel \ref{tab:fuzzy-segitiga}. Matriks perbandingan berpasangan criteria dapat dilihat pada Tabel \ref{tab:pairwise-matrix-ppt} Matriks perbandingan berpasangan People dapat dilihat pada Tabel \ref{tab:pp-matrix}. Matriks perbandingan berpasangan Process dapat dilihat pada Tabel \ref{tab:pp-matrix}. Matriks perbandingan berpasangan Technology dapat dilihat pada Tabel \ref{tab:tt-matrix}
+
+
+\begin{table}[h!]
+\begin{adjustwidth}{-\extralength}{0cm}
+    \centering
+    \begin{tabular}{c|c|c|c}
+    \hline
+    & \textbf{People} & \textbf{Process} & \textbf{Technology} \\
+    \hline
+    \textbf{People} & [1.000, 1.000, 1.000] & [1.480, 1.752, 2.069] & [2.728, 3.271, 3.822] \\
+    \hline
+    \textbf{Process} & [0.483, 0.571, 0.675] & [1.000, 1.000, 1.000] & [1.612, 1.916, 2.245] \\
+    \hline
+    \textbf{Technology} & [0.262, 0.306, 0.367] & [0.445, 0.522, 0.620] & [1.000, 1.000, 1.000] \\
+    \hline
+    \end{tabular}
+    \caption{Pairwise Comparison Matrix for People, Process, and Technology}
+    \label{tab:pairwise-matrix-ppt}
+\end{adjustwidth}
+\end{table}
+
+
+\begin{table}[h!]
+\begin{adjustwidth}{-\extralength}{0cm}
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+    \hline
+    & \textbf{PP1} & \textbf{PP2} & \textbf{PP3} & \textbf{PP4} \\
+    \hline
+    \textbf{PP1} & [1.000, 1.000, 1.000] & [2.069, 2.470, 2.916] & [2.069, 2.470, 2.916] & [2.069, 2.470, 2.916] \\
+    \hline
+    \textbf{PP2} & [0.343, 0.405, 0.483] & [1.000, 1.000, 1.000] & [2.908, 3.466, 4.050] & [2.908, 3.466, 4.050] \\
+    \hline
+    \textbf{PP3} & [0.343, 0.405, 0.483] & [0.247, 0.289, 0.344] & [1.000, 1.000, 1.000] & [0.242, 0.280, 0.329] \\
+    \hline
+    \textbf{PP4} & [0.343, 0.405, 0.483] & [0.247, 0.289, 0.344] & [3.035, 3.574, 4.137] & [1.000, 1.000, 1.000] \\
+    \hline
+    \end{tabular}
+    \caption{Pairwise Comparison Matrix for PP1, PP2, PP3, and PP4}
+    \label{tab:pp-matrix}
+\end{adjustwidth}
+\end{table}
+
+
+\begin{table}[h!]
+\begin{adjustwidth}{-\extralength}{0cm}
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+    \hline
+    & \textbf{PR1} & \textbf{PR2} & \textbf{PR3} & \textbf{PR4} \\
+    \hline
+    \textbf{PR1} & [1.000, 1.000, 1.000] & [1.989, 2.342, 2.719] & [2.007, 2.404, 2.837] & [4.399, 5.218, 6.033] \\
+    \hline
+    \textbf{PR2} & [0.368, 0.427, 0.503] & [1.000, 1.000, 1.000] & [2.007, 2.404, 2.837] & [4.399, 5.218, 6.033] \\
+    \hline
+    \textbf{PR3} & [0.352, 0.416, 0.498] & [0.352, 0.416, 0.498] & [1.000, 1.000, 1.000] & [4.399, 5.218, 6.033] \\
+    \hline
+    \textbf{PR4} & [0.166, 0.192, 0.227] & [0.166, 0.192, 0.227] & [0.166, 0.192, 0.227] & [1.000, 1.000, 1.000] \\
+    \hline
+    \end{tabular}
+    \caption{Pairwise Comparison Matrix for PR1, PR2, PR3, and PR4}
+    \label{tab:pr-matrix}
+\end{adjustwidth}
+\end{table}
+
+
+\begin{table}[h!]
+\begin{adjustwidth}{-\extralength}{0cm}
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+    \hline
+    & \textbf{TT1} & \textbf{TT2} & \textbf{TT3} & \textbf{TT4} \\
+    \hline
+    \textbf{TT1} & [1.000, 1.000, 1.000] & [0.182, 0.200, 0.220] & [0.236, 0.276, 0.329] & [0.125, 0.139, 0.156] \\
+    \hline
+    \textbf{TT2} & [4.539, 5.009, 5.483] & [1.000, 1.000, 1.000] & [0.236, 0.276, 0.329] & [0.125, 0.139, 0.156] \\
+    \hline
+    \textbf{TT3} & [3.035, 3.621, 4.238] & [3.035, 3.621, 4.238] & [1.000, 1.000, 1.000] & [0.125, 0.139, 0.156] \\
+    \hline
+    \textbf{TT4} & [6.397, 7.218, 8.006] & [6.397, 7.218, 8.006] & [6.397, 7.218, 8.006] & [1.000, 1.000, 1.000] \\
+    \hline
+    \end{tabular}
+    \caption{Pairwise Comparison Matrix for TT1, TT2, TT3, and TT4}
+    \label{tab:tt-matrix}
+\end{adjustwidth}
+\end{table}
+
+
+Setelah matriks untuk setiap kriteria terbentuk, selanjutnya dihitung rasio konsistensi (CR), criteria weight, dan peringkat lokal untuk masing-masing CSF. Hasilnya disajikan dalam Tabel \ref{tab:criteria-table} dan Tabel \ref{tab:csf-table}. Nilai CR yang didapatkan lebih besar dari 0.1, yang menunjukkan bahwa hasil pertimbangan para responden kurang konsisten. Peringkat lokal ditentukan berdasarkan urutan nilai bobot kriteria.
+
+\begin{table}[H]
+    \caption{Criteria Weight}
+    \label{tab:criteria-table}
+    \centering
+    \begin{tabular}{c|c|c|c}
+        \toprule
+        \textbf{Criteria} & \textbf{Weight} & \textbf{CR} & \textbf{Local Ranking} \\ 
+        \midrule
+        \textbf{People} & 0.5811 & \multirow{3}{*}{0.0743} & 1 \\ \cline{1-2} \cline{4-4}
+        \textbf{Process} & 0.3346 &  & 2 \\ \cline{1-2} \cline{4-4}
+        \textbf{Technology} & 0.1759 &  & 3 \\ 
+        \bottomrule
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+
+
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Critical Success Factors (CSFs) Weight}
+    \label{tab:csf-table}
+    \centering
+    \begin{tabular}{c|c|p{7cm}|c|c|c}
+        \toprule
+        \textbf{Criteria} & \textbf{CSF Code} & \textbf{Critical Success Factor} & \textbf{CR} & \textbf{Criteria Weight} & \textbf{Local Ranking} \\ 
+        \midrule
+        \multirow{4}{*}{\textbf{People}} 
+        & PP1 & Dukungan manajemen senior & \multirow{4}{*}{0.2069} & 0.3604 & 1 \\ \cline{2-3} \cline{5-6}
+        & PP2 & Alokasi sumber daya &  & 0.3562 & 2 \\ \cline{2-3} \cline{5-6}
+        & PP3 & Kompatibilitas Teknologi &  & 0.0842 & 4 \\ \cline{2-3} \cline{5-6}
+        & PP4 & Perubahan manajemen dan Adaptasi User &  & 0.2248 & 3 \\ 
+        \midrule
+        \multirow{4}{*}{\textbf{Process}} 
+        & PR1 & Rekayasa ulang proses bisnis & \multirow{4}{*}{0.1176} & 0.3929 & 1 \\ \cline{2-3} \cline{5-6}
+        & PR2 & Kebutuhan sistem yang jelas &  & 0.3242 & 2 \\ \cline{2-3} \cline{5-6}
+        & PR3 & Standar operasional yang jelas &  & 0.2524 & 3 \\ \cline{2-3} \cline{5-6}
+        & PR4 & Mitigasi dan manajemen risiko &  & 0.0562 & 4 \\ 
+        \midrule 
+        \multirow{4}{*}{\textbf{Technology}} 
+        & TT1 & Keamanan yang kuat & \multirow{4}{*}{0.3173} & 0.0420 & 4 \\ \cline{2-3} \cline{5-6}
+        & TT2 & Skalabilitas infrastruktur IT &  & 0.1669 & 3 \\ \cline{2-3} \cline{5-6}
+        & TT3 & Integrasi Sistem &  & 0.2190 & 2 \\ \cline{2-3} \cline{5-6}
+        & TT4 & Performa dan kecepatan sistem &  & 0.5880 & 1 \\ 
+        \bottomrule
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+Untuk mengetahui bobot kriteria dan peringkat global, bobot sub-kriteria dikalikan dengan bobot masing-masing kriteria. Hasil akhir dari perhitungan ranking dapat dilihat pada Figure \ref{fig:ranking-csf}
+
+% \begin{figure}[h!]
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%             ybar,
+%             symbolic x coords={
+%                 Dukungan manajemen senior,
+%                 Alokasi sumber daya,
+%                 Rekayasa ulang proses bisnis,
+%                 Perubahan manajemen dan Adaptasi User,
+%                 Kebutuhan sistem yang jelas,
+%                 Performa dan kecepatan sistem,
+%                 Standar operasional yang jelas,
+%                 Kompatibilitas Teknologi,
+%                 Integrasi Sistem,
+%                 Skalabilitas infrastruktur IT,
+%                 Mitigasi dan manajemen risiko,
+%                 Keamanan yang kuat
+%             },
+%             xtick=data,
+%             x tick label style={rotate=45, anchor=east},
+%             ylabel={Nilai},
+%             enlarge x limits=0.1,
+%             ymin=0, ymax=0.2,
+%             grid=major,
+%             % nodes near coords,
+%             bar width=12pt
+%         ]
+%         \addplot[fill=lightgray] coordinates {(Dukungan manajemen senior, 0.1954) 
+%                               (Alokasi sumber daya, 0.1931) 
+%                               (Rekayasa ulang proses bisnis, 0.1232) 
+%                               (Perubahan manajemen dan Adaptasi User, 0.1219)
+%                               (Kebutuhan sistem yang jelas, 0.1017)
+%                               (Performa dan kecepatan sistem, 0.0966)
+%                               (Standar operasional yang jelas, 0.0792)
+%                               (Kompatibilitas Teknologi, 0.0456)
+%                               (Integrasi Sistem, 0.0360)
+%                               (Skalabilitas infrastruktur IT, 0.0274)
+%                               (Mitigasi dan manajemen risiko, 0.0176)
+%                               (Keamanan yang kuat, 0.0069)};
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{Bar Chart of Factors and Values}
+% \end{figure}
+
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{attachments/fuzzy_priorities.png}
+\caption{Ranking CSF \label{fig:ranking-csf}}
+\end{figure}   
+
+Penelitian ini mengidentifikasi 12 Critical Success Factors (CSF) dalam implementasi CBS di BPR, yang dikelompokkan dalam tiga kategori utama: People, Technology, dan Process. 
+
+Dalam implementasi Core Banking System (CBS), Dukungan Manajemen Senior (0.1954) dan Alokasi Sumber Daya (0.1931) menjadi faktor paling penting. Dukungan manajemen memastikan keberhasilan proyek, sementara alokasi sumber daya yang memadai, termasuk tenaga ahli dan infrastruktur, sangat penting untuk kelancaran implementasi.
+
+Faktor lainnya yang signifikan adalah Rekayasa Ulang Proses Bisnis (0.1232), yang memastikan proses bisnis yang lebih efisien dan sesuai dengan sistem baru, serta Perubahan Manajemen dan Adaptasi User (0.1219), yang berkaitan dengan kesiapan pengguna untuk beralih ke sistem baru.
+
+Meskipun faktor seperti Performa dan Kecepatan Sistem (0.0966) dan Kebutuhan Sistem yang Jelas (0.1017) penting, mereka tidak sepenting faktor-faktor utama di atas. Faktor-faktor lain seperti Kompatibilitas Teknologi (0.0456) dan Keamanan yang Kuat (0.0069) meskipun krusial, memiliki bobot lebih rendah dalam keseluruhan implementasi CBS.
+
+\subsection{Diskusi}
+Berdasarkan analisis yang dilakukan, ditemukan lima faktor utama yang memainkan peran penting dalam kesuksesan implementasi CBS, diantaranya:
+
+\begin{enumerate}
+   \item Dukungan Manajemen Senior
+ \\  Peran manajemen senior menjadi krusial dalam menyediakan arahan strategis, memastikan alokasi sumber daya yang memadai, serta menjaga komitmen terhadap keberlanjutan proyek.
+
+ \item Alokasi Sumber Daya
+\\ Ketersediaan dana, infrastruktur, dan sumber daya manusia yang mencukupi menjadi elemen penting untuk mendukung setiap tahap implementasi, dari perencanaan hingga pelaksanaan.
+
+  \item Rekayasa Ulang Proses Bisnis: 
+ \\ Penyesuaian proses bisnis yang sejalan dengan kemampuan CBS membantu menciptakan integrasi yang mulus, sehingga mendukung efisiensi dan efektivitas operasional.
+
+ \item Kebutuhan Sistem yang Jelas
+\\ Identifikasi kebutuhan yang spesifik sejak awal memungkinkan sistem yang dikembangkan dapat memenuhi kebutuhan operasional lembaga secara optimal dan sesuai regulasi.
+
+ \item Performa dan Kecepatan Sistem
+  \\  Sistem CBS yang memiliki performa andal memastikan keberlangsungan pelayanan kepada nasabah maupun proses operasional internal lembaga keuangan.
+\end{enumerate}
+
+% Sam bantu cerita tentang dukungan manajemen senior, alokasi sumber daya, rekayasa proses bisnis dan perubahan manajemen dan adaptasi user.
+
+
 
 % https://remote-lib.ui.ac.id:2147/stamp/stamp.jsp?tp=&arnumber=8982404
 % https://remote-lib.ui.ac.id:2147/stamp/stamp.jsp?tp=&arnumber=9354331
 
+\section{Kesimpulan dan Saran}
+\subsection{Kesimpulan}
+Keberhasilan implementasi Core Banking System (CBS) di lembaga keuangan mikro sangat dipengaruhi oleh pengelolaan faktor-faktor kunci yang meliputi dukungan manajemen senior, alokasi sumber daya, rekayasa ulang proses bisnis, kebutuhan sistem yang jelas, dan performa sistem. Dukungan manajemen senior berperan penting dalam memberikan arahan strategis dan alokasi sumber daya, sementara ketersediaan dana, infrastruktur, serta tenaga kerja yang memadai menjadi fondasi keberhasilan implementasi.
 
+\\ Selain itu, rekayasa ulang proses bisnis diperlukan untuk memastikan integrasi yang optimal antara sistem baru dengan operasional lembaga. Identifikasi kebutuhan sistem yang jelas sejak awal juga membantu meminimalkan risiko kesalahan implementasi, sedangkan performa sistem yang andal meningkatkan efisiensi operasional dan kepuasan nasabah.
+
+\\ Penelitian ini menunjukkan bahwa pendekatan yang terstruktur dan fokus pada faktor-faktor utama ini dapat membantu lembaga keuangan mikro tidak hanya meningkatkan kualitas layanan, tetapi juga mempercepat transformasi digital dan memastikan kepatuhan terhadap regulasi. Dengan demikian, CBS tidak hanya menjadi solusi teknologi, tetapi juga alat strategis untuk menciptakan daya saing dan keberlanjutan operasional jangka panjang.
+
+\subsection{Saran}
+\subsubsection{Untuk Penelitian Berikutnya}
+Untuk meningkatkan penelitian tentang implementasi Core Banking System (CBS) di lembaga keuangan mikro semakin komprehensif, penelitian di masa depan dapat mempertimbangkan hal-hal sebagai berikut:
+\begin{enumerate}
+   \item Pemilihan Responden yang Lebih Tepat 
+   \\Pastikan responden yang terlibat memiliki pengetahuan mendalam dan peran langsung dalam implementasi CBS, seperti kepala tim implemetasi atau anggota tim implementasi. Hal ini dapat meningkatkan validitas dan relevansi data yang dikumpulkan.
+\item Survey Ulang untuk Responden yang Tidak Konsisten
+\\ Melakukan survei ulang terhadap responden yang memberikan jawaban tidak konsisten, misalnya dengan metode wawancara tambahan, untuk memastikan keakuratan data.
+
+\item Pendekatan Kuantitatif Lebih Lanjut
+\\ Menggunakan analisis statistik yang lebih mendalam untuk mengukur dampak implementasi CBS terhadap efisiensi operasional dan kinerja keuangan BPR.
+
+\item Eksplorasi Aspek Lainnya
+\\ Meninjau pengaruh faktor-faktor baru, seperti peran Kelompok Usaha (KU) BPR dalam memengaruhi Critical Success Factors (CSF) dan keberhasilan implementasi CBS, sehingga dapat memberikan gambaran yang lebih spesifik untuk tiap karakteristik lembaga keuangan.
+
+\end{enumerate}
+\subsubsection{Untuk Organisasi}
+Berdasarkan temuan penelitian, terdapat saran strategis yang dapat diterapkan oleh BPR untuk meningkatkan keberhasilan implementasi CBS, diantaranya:
+\begin{enumerate}
+   \item Membangun Komitmen Manajemen Senior
+   \\ Manajemen harus menjadikan implementasi CBS sebagai prioritas utama dengan mengalokasikan sumber daya yang memadai dan memastikan pengawasan yang berkelanjutan.
+\item Menguatkan SDM dan Adaptasi Teknologi
+\\ Mengadakan pelatihan intensif dan program sosialisasi teknologi untuk mempersiapkan karyawan menghadapi perubahan operasional.
+
+\item Melakukan Rekayasa Ulang Proses Bisnis
+\\ Menyesuaikan proses bisnis dengan kemampuan CBS sehingga integrasi sistem dapat berjalan lancar dan memberikan manfaat maksimal.
+
+\item Memanfaatkan Forum Kolaborasi
+\\ Berpartisipasi atau menfasilitasi forum yang dapat diinisiasi oleh regulator atau asosiasi seperti Perbarindo untuk berbagi pengalaman dengan BPR lain, terutama yang telah berhasil mengimplementasi CBS.
+
+\item Meningkatkan Infrastruktur Teknologi:
+\\ Investasi pada teknologi yang aman, andal, dan dapat diskalakan harus menjadi prioritas untuk mendukung kelangsungan operasional yang lebih baik.
+
+
+\end{enumerate}
 
 % Dibawah  ini template bawaan dari MDPI
 
@@ -669,7 +1187,11 @@ The following abbreviations are used in this manuscript:\\
 
 \noindent 
 \begin{tabular}{@{}ll}
-MDPI & Multidisciplinary Digital Publishing Institute\\
+% MDPI & Multidisciplinary Digital Publishing Institute\\
+CSF & Critical Success Factors \\
+CR & Consistency Ratio \\
+CI & Consistency Index \\
+CBS & Core Banking System \\
 %DOAJ & Directory of open access journals\\
 %TLA & Three letter acronym\\
 %LD & Linear dichroism
